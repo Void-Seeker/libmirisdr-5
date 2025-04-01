@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2013 by Miroslav Slugen <thunder.m@email.cz
+ * Copyright (C) 2024 by Peter Hackenberg <170885528+Peter3579@users.noreply.github.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -97,14 +98,19 @@ int mirisdr_setup (mirisdr_dev_t **out_dev, mirisdr_dev_t *dev) {
     dev->gain = DEFAULT_GAIN;
     dev->band = MIRISDR_BAND_VHF; // matches always the default frequency of 90 MHz
 
-    dev->gain_reduction_lna = 0;
+    dev->gain_reduction_lna = 1;
+    dev->gain_reduction_mixbuffer = 3;
     dev->gain_reduction_mixer = 0;
-    dev->gain_reduction_baseband = 43;
+    dev->gain_reduction_baseband = 19;
     dev->if_freq = MIRISDR_IF_ZERO;
     dev->format_auto = MIRISDR_FORMAT_AUTO_ON;
     dev->bandwidth = MIRISDR_BW_8MHZ;
     dev->xtal = MIRISDR_XTAL_24M;
     dev->bias = 0;
+    dev->dc_mode = MIRISDR_DC_PERIODIC2;
+    dev->dc_speedup = 0;
+    dev->dc_track = 0x1f;
+    dev->dc_period = 0x800;
 
     dev->hw_flavour = MIRISDR_HW_DEFAULT;
 
