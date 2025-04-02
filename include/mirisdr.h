@@ -134,7 +134,7 @@ MIRISDR_API int mirisdr_get_bias (mirisdr_dev_t *p);                    /* extra
  *
  * Only raw interface for testing purposes. No sanity checks done.
  * raw format with bit length in parenthesis:
- *   [ unused (4) | period (12) | unsed (6) | track (6) | speedup (1) | mode (3) ]
+ *   [ unused (4) | period (12) | unused (6) | track (6) | speedup (1) | mode (3) ]
  * The default dc setting is:
  *   0x080001f2 (period = 0x800, track = 0x1f, speedup = 0, mode = 2)
  */
