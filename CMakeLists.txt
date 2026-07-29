@@ -20,7 +20,7 @@
 ########################################################################
 # Project setup
 ########################################################################
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.12)
 project(mirisdr C)
 
 # use, i.e. don't skip the full RPATH for the build tree
