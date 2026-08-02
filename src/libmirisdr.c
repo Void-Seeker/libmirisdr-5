@@ -271,9 +271,12 @@ int mirisdr_close (mirisdr_dev_t *p) {
                 fprintf(stderr, "Reattaching kernel driver failed!\n");
         }
 #endif
-        if (p->async_status != MIRISDR_ASYNC_FAILED) {
-            libusb_close(p->dh);
-        }
+        /* Always close the handle. Skipping libusb_close() when the async side
+         * had failed leaks the device handle, so the receiver stays claimed and
+         * every later open fails with a stalled endpoint (transfer status 4)
+         * until it is physically replugged -- i.e. exactly the case where
+         * cleaning up matters most. */
+        libusb_close(p->dh);
     }
 
     if (p->ctx) libusb_exit(p->ctx);
